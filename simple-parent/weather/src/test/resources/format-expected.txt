@@ -1,0 +1,9 @@
+*********************************
+Current Weather Conditions for:
+Zalla,  Basque Country, Spain
+
+Temperature: 11C
+Condition: Cloudy
+Humidity: 90
+Wind Chill: 50
+*********************************
