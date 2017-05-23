@@ -1,13 +1,13 @@
 package org.sonatype.mavenbook.webapp;
 
 import java.io.IOException;
-import java.io.PrintWriter;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.sonatype.mavenbook.weather.Weather;
 import org.sonatype.mavenbook.weather.WeatherService;
 
 public class WeatherServlet extends HttpServlet {
@@ -16,14 +16,16 @@ public class WeatherServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		String zip = request.getParameter("zip");
 		WeatherService weatherService = new WeatherService();
-		PrintWriter out = response.getWriter();
+
+		Weather weather = null;
 		try {
-			out.println(weatherService.retrieveForecast(zip));
+			weather = weatherService.retrieveForecast(zip);
 		} catch (Exception e) {
-			out.println("Error Retrieving Forecast: " + e.getMessage());
+			e.printStackTrace();
 		}
-		out.flush();
-		out.close();
+
+		request.setAttribute("weather", weather);
+		request.getRequestDispatcher("/WEB-INF/tiempo.jsp").forward(request, response);
 	}
 
 }

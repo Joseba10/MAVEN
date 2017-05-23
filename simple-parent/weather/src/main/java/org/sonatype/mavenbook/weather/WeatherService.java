@@ -7,7 +7,7 @@ public class WeatherService {
 	public WeatherService() {
 	}
 
-	public String retrieveForecast(String zip) throws Exception {
+	public Weather retrieveForecast(String zip) throws Exception {
 		// Retrieve Data
 		InputStream dataIn = new YahooRetriever().retrieve(zip);
 
@@ -15,6 +15,8 @@ public class WeatherService {
 		Weather weather = new YahooParser().parse(dataIn);
 
 		// Format (Print) Data
-		return new WeatherFormatter().format(weather);
+		// return new WeatherFormatter().format(weather);
+
+		return weather;
 	}
 }
