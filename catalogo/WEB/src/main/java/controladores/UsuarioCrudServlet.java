@@ -39,6 +39,7 @@ public class UsuarioCrudServlet extends HttpServlet {
 
 			dal.alta(new Usuario("usuario1", "pass1"));
 			dal.alta(new Usuario("usuario2", "pass2"));
+			dal.alta(new Usuario("admin", "admin"));
 
 			application.setAttribute("dal", dal);
 		}
