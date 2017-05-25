@@ -80,7 +80,7 @@ public class ProductoFormServlet extends HttpServlet {
 		Producto producto = new Producto(nombre, descripcion, precio, imagen);
 		producto.setId(id);
 		ServletContext application = request.getServletContext();
-		ProductoDAL dal = (ProductoDAL) application.getAttribute("dal");
+		ProductoDAL dal = (ProductoDAL) application.getAttribute("dalproductos");
 
 		switch (op) {
 		case "alta":

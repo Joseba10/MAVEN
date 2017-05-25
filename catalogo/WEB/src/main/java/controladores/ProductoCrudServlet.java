@@ -27,19 +27,21 @@ public class ProductoCrudServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ServletContext application = request.getServletContext();
-		ProductoDAL dal = (ProductoDAL) application.getAttribute("dal");// Si entras por
-																		// primera vez se
-																		// crea un objeto
-																		// dal lo guarda y
-																		// siempre coge el
-																		// mismo si entras
-																		// de nuevo
+		ProductoDAL dal = (ProductoDAL) application.getAttribute("dalproductos");// Si
+																					// entras
+																					// por
+		// primera vez se
+		// crea un objeto
+		// dal lo guarda y
+		// siempre coge el
+		// mismo si entras
+		// de nuevo
 		if (dal == null) {
 			dal = ProductoDalFactory.getProductoDAL();
 
 			dal.alta(new Producto("Manzana", "Manzana de Asturias", 1.2, 0));
 			dal.alta(new Producto("Tomate", "Tomates de Jaen", 2.2, 1));
-			application.setAttribute("dal", dal);
+			application.setAttribute("dalproductos", dal);
 		}
 
 		String op = request.getParameter("op");
