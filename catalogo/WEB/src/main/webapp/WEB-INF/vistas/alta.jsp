@@ -58,10 +58,7 @@ width: 200px;
 
 </style>
 
-<ul>
- 		<li><a href="/pruebas/loginserver">Login</a></li>
- 		<li><a href="#">Alta</a></li>
- 	</ul>
+
 		<fieldset>
 
 			<label for="nombre">Nombre</label> 

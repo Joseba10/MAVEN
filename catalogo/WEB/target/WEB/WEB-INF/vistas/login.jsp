@@ -55,10 +55,7 @@ width: 200px;
 
 
 </style>
- 	<ul>
- 		<li><a href="#">Login</a></li>
- 		<li><a href="/pruebas/alta">Alta</a></li>
- 	</ul>
+
 	<form action="loginserver" method="post">
 	
 		<fieldset>
