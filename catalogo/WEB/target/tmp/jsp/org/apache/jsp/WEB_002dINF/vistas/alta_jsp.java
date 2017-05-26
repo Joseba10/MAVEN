@@ -13,7 +13,7 @@ public final class alta_jsp extends org.apache.jasper.runtime.HttpJspBase
 
   static {
     _jspx_dependants = new java.util.ArrayList<String>(2);
-    _jspx_dependants.add("/WEB-INF/vistas/includes/cabecera.jsp");
+    _jspx_dependants.add("/WEB-INF/vistas/includes/cabeceralogin.jsp");
     _jspx_dependants.add("/WEB-INF/vistas/includes/pie.jsp");
   }
 
@@ -92,8 +92,8 @@ public final class alta_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<ul>\r\n");
       out.write("\t\t\t<li><a href=\"loginserver\">Login</a></li>\r\n");
       out.write("\t\t\t<li><a href=\"alta\">Alta</a></li>\r\n");
-      out.write("\t\t\t<li><a href=\"login?opcion=logout\">Salir</a></li>\r\n");
-      out.write("\t\t\t<li><a href=\"usuariocrud\">Mantenimiento usuarios</a></li>\r\n");
+      out.write("\t\t\r\n");
+      out.write("\t\t\t\r\n");
       out.write("\t\t</ul>\r\n");
       out.write("\t</nav>\r\n");
       out.write("\r\n");

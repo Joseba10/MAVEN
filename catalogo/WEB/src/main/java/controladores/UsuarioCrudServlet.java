@@ -10,10 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.TIPOS.Usuario;
-import com.ipartek.catalogo.DAL.DalFactory;
 import com.ipartek.catalogo.DAL.UsuariosDAL;
 
-@WebServlet("/usuariocrud")
+@WebServlet("/admin/usuariocrud")
 public class UsuarioCrudServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static final String RUTA_LISTADO = "/WEB-INF/vistas/usuariocrud.jsp";
@@ -27,22 +26,15 @@ public class UsuarioCrudServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ServletContext application = getServletContext();
-		UsuariosDAL dal = (UsuariosDAL) application.getAttribute("dal");// Si entras por
-																		// primera vez se
-																		// crea un objeto
-																		// dal lo guarda y
-																		// siempre coge el
-																		// mismo si entras
-																		// de nuevo
-		if (dal == null) {
-			dal = DalFactory.getUsuariosDAL();
+		UsuariosDAL dal = (UsuariosDAL) application.getAttribute("usuariosDal");// Si
+																				// entras
+																				// por
+		// primera vez se
+		// crea un objeto
+		// mismo si entras
+		// de nuevo
 
-			dal.alta(new Usuario("usuario1", "pass1"));
-			dal.alta(new Usuario("usuario2", "pass2"));
-			dal.alta(new Usuario("admin", "admin"));
-
-			application.setAttribute("dal", dal);
-		}
+		// dal lo guarda y
 
 		String op = request.getParameter("op");
 
@@ -71,5 +63,4 @@ public class UsuarioCrudServlet extends HttpServlet {
 			}
 		}
 	}
-
 }

@@ -73,6 +73,7 @@ margin-top: 30px;
 			
 			<li><a href="productocrud?op=alta">Alta</a></li>
 		
-			<li><a href="productocrud">Mantenimiento Productos</a></li>
+			
+				<li><a href="/admin/usuariocrud">Mantenimiento usuarios</a></li>
 		</ul>
 	</nav>

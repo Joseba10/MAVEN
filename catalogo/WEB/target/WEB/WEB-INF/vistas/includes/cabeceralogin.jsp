@@ -32,8 +32,7 @@
 		<ul>
 			<li><a href="loginserver">Login</a></li>
 			<li><a href="alta">Alta</a></li>
-			<li><a href="loginserver?opcion=logout">Salir</a></li>
-			<li><a href="/admin/productocrud">Mantenimiento Productos</a></li>
 		
+			
 		</ul>
 	</nav>

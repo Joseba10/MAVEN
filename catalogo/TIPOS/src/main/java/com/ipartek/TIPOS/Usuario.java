@@ -5,6 +5,15 @@ public class Usuario {
 	private String nombre;
 	private String pass;
 	private String errores;
+	private boolean admin = false;
+
+	public boolean isAdmin() {
+		return admin;
+	}
+
+	public void setAdmin(boolean admin) {
+		this.admin = admin;
+	}
 
 	public String getErrores() {
 		return errores;
@@ -16,6 +25,14 @@ public class Usuario {
 
 	public Usuario() {
 		this("", "");
+	}
+
+	public Usuario(String nombre, String pass, boolean admin) {
+		super();
+		this.nombre = nombre;
+		this.pass = pass;
+		this.admin = admin;
+
 	}
 
 	public String getNombre() {

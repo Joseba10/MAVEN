@@ -11,14 +11,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.TIPOS.Producto;
 import com.ipartek.catalogo.DAL.ProductoDAL;
-import com.ipartek.catalogo.DAL.ProductoDalFactory;
 
-@WebServlet("/productocrud")
+@WebServlet("/admin/productocrud")
 public class ProductoCrudServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	static final String RUTA_LISTADO = "/WEB-INF/vistas/productocrud.jsp";
 	static final String RUTA_FORMULARIO = "/WEB-INF/vistas/productoform.jsp";
-	static final String RUTA_SERVLET_LISTADO = "/productocrud";
+	static final String RUTA_SERVLET_LISTADO = "/admin/productocrud";
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -27,7 +26,7 @@ public class ProductoCrudServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ServletContext application = request.getServletContext();
-		ProductoDAL dal = (ProductoDAL) application.getAttribute("dalproductos");// Si
+		ProductoDAL dal = (ProductoDAL) application.getAttribute("productosDal");// Si
 																					// entras
 																					// por
 		// primera vez se
@@ -36,13 +35,6 @@ public class ProductoCrudServlet extends HttpServlet {
 		// siempre coge el
 		// mismo si entras
 		// de nuevo
-		if (dal == null) {
-			dal = ProductoDalFactory.getProductoDAL();
-
-			dal.alta(new Producto("Manzana", "Manzana de Asturias", 1.2, 0));
-			dal.alta(new Producto("Tomate", "Tomates de Jaen", 2.2, 1));
-			application.setAttribute("dalproductos", dal);
-		}
 
 		String op = request.getParameter("op");
 

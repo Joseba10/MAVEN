@@ -139,7 +139,8 @@ static {
       out.write("\t\t\t\r\n");
       out.write("\t\t\t<li><a href=\"productocrud?op=alta\">Alta</a></li>\r\n");
       out.write("\t\t\r\n");
-      out.write("\t\t\t<li><a href=\"productocrud\">Mantenimiento Productos</a></li>\r\n");
+      out.write("\t\t\t\r\n");
+      out.write("\t\t\t\t<li><a href=\"usuariocrud\">Mantenimiento usuarios</a></li>\r\n");
       out.write("\t\t</ul>\r\n");
       out.write("\t</nav>\r\n");
       out.write("\r\n");

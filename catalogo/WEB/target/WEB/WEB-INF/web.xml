@@ -6,4 +6,19 @@
 
 
   <display-name>Archetype Created Web Application</display-name>
+  <filter>
+  	<description>
+  	</description>
+  	<display-name>Autorizacion</display-name>
+  	<filter-name>Autorizacion</filter-name>
+  	<filter-class>controladores.Autorizacion</filter-class>
+  </filter>
+  <filter-mapping>
+  	<filter-name>Autorizacion</filter-name>
+  	<url-pattern>/admin/*</url-pattern>
+  	<dispatcher>REQUEST</dispatcher>
+  </filter-mapping>
+  <listener>
+  	<listener-class>controladores.Inicializador</listener-class>
+  </listener>
 </web-app>

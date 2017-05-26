@@ -1,10 +1,12 @@
 C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\com\ipartek\catalogo\WEB\servlets\GuardarDatosServlet.java
 C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\controladores\AltaServlet.java
 C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\controladores\ProductoFormServlet.java
+C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\controladores\Inicializador.java
 C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\controladores\LoginServer.java
 C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\controladores\ProductoCrudServlet.java
 C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\com\ipartek\catalogo\WEB\servlets\CabecerasServlet.java
 C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\com\ipartek\catalogo\WEB\servlets\ContadorVisitasServlet.java
 C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\controladores\UsuarioCrudServlet.java
 C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\controladores\UsuarioFormServlet.java
+C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\controladores\Autorizacion.java
 C:\JAVA\workspace\MAVEN\catalogo\WEB\src\main\java\com\ipartek\catalogo\WEB\servlets\RecibirDatosServlet.java

@@ -14,7 +14,7 @@ import com.ipartek.TIPOS.Producto;
 import com.ipartek.catalogo.DAL.ProductoDAL;
 import com.ipartek.catalogo.DAL.ProductoDALException;
 
-@WebServlet("/productoform")
+@WebServlet("/admin/productoform")
 public class ProductoFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -80,7 +80,7 @@ public class ProductoFormServlet extends HttpServlet {
 		Producto producto = new Producto(nombre, descripcion, precio, imagen);
 		producto.setId(id);
 		ServletContext application = request.getServletContext();
-		ProductoDAL dal = (ProductoDAL) application.getAttribute("dalproductos");
+		ProductoDAL dal = (ProductoDAL) application.getAttribute("productosDal");
 
 		switch (op) {
 		case "alta":

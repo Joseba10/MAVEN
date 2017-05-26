@@ -10,13 +10,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import com.ipartek.TIPOS.Usuario;
-import com.ipartek.catalogo.DAL.DalFactory;
 import com.ipartek.catalogo.DAL.UsuarioYaExiste;
 import com.ipartek.catalogo.DAL.UsuariosDAL;
 
 @WebServlet("/alta")
 public class AltaServlet extends HttpServlet {
-	/* package */static final String USUARIOS_DAL = "dal";
+	/* package */static final String USUARIOS_DAL = "usuariosDal";
 
 	private static final long serialVersionUID = 1L;
 
@@ -27,6 +26,9 @@ public class AltaServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
+		ServletContext application = request.getServletContext();
+
 		String nombre = request.getParameter("nombre");
 		String pass = request.getParameter("pass");
 		String pass2 = request.getParameter("pass2");
@@ -50,13 +52,8 @@ public class AltaServlet extends HttpServlet {
 				usuario.setErrores("Las contraseñas deben ser iguales");
 				request.setAttribute("usuario", usuario);
 			} else {
-				ServletContext application = getServletContext();
 
 				UsuariosDAL usuariosDAL = (UsuariosDAL) application.getAttribute(USUARIOS_DAL);
-
-				if (usuariosDAL == null) {
-					usuariosDAL = DalFactory.getUsuariosDAL();
-				}
 
 				try {
 					usuariosDAL.alta(usuario);
@@ -66,7 +63,6 @@ public class AltaServlet extends HttpServlet {
 					request.setAttribute("usuario", usuario);
 				}
 
-				application.setAttribute(USUARIOS_DAL, usuariosDAL);
 			}
 		}
 		request.getRequestDispatcher(RUTA_ALTA).forward(request, response);

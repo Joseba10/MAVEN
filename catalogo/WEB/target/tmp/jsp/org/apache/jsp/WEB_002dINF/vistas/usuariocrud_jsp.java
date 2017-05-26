@@ -93,8 +93,9 @@ public final class usuariocrud_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t<ul>\r\n");
       out.write("\t\t\t<li><a href=\"loginserver\">Login</a></li>\r\n");
       out.write("\t\t\t<li><a href=\"alta\">Alta</a></li>\r\n");
-      out.write("\t\t\t<li><a href=\"login?opcion=logout\">Salir</a></li>\r\n");
-      out.write("\t\t\t<li><a href=\"usuariocrud\">Mantenimiento usuarios</a></li>\r\n");
+      out.write("\t\t\t<li><a href=\"loginserver?opcion=logout\">Salir</a></li>\r\n");
+      out.write("\t\t\t<li><a href=\"productocrud\">Mantenimiento Productos</a></li>\r\n");
+      out.write("\t\t\r\n");
       out.write("\t\t</ul>\r\n");
       out.write("\t</nav>\r\n");
       out.write("\r\n");

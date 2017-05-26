@@ -71,9 +71,9 @@ margin-top: 30px;
 	<nav>
 		<ul>
 			
-			<li><a href="productocrud?op=alta">Alta</a></li>
+
+		<li><a href="loginserver?opcion=logout">Logout</a></li>
+		<li><a href="/admin/productocrud.jsp">Mantenimiento Productos</a></li>
 		
-			<li><a href="#">Mantenimiento Productos</a></li>
-			<li><a href="productocrud">Zona de Administracion</a></li>
 		</ul>
 	</nav>

@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import com.ipartek.TIPOS.Usuario;
-import com.ipartek.catalogo.DAL.DalFactory;
+import com.ipartek.catalogo.DAL.ProductoDAL;
 import com.ipartek.catalogo.DAL.UsuariosDAL;
 
 @WebServlet("/loginserver")
@@ -44,11 +44,8 @@ public class LoginServer extends HttpServlet {
 		// Llamada a la logica de negocio
 		ServletContext application = getServletContext();
 		// Recoge datos
-		UsuariosDAL usuariosDAL = (UsuariosDAL) application.getAttribute(AltaServlet.USUARIOS_DAL);
+		UsuariosDAL usuariosDAL = (UsuariosDAL) application.getAttribute("usuariosDal");
 		// Si no existe el dato se crea
-		if (usuariosDAL == null) {
-			usuariosDAL = DalFactory.getUsuariosDAL();
-		}
 
 		// Solo para crear una base de datos falsa con el contenido de un
 		// usuario
@@ -100,6 +97,9 @@ public class LoginServer extends HttpServlet {
 			usuario.setErrores("El nombre y las pass deben tener como minimo " + MINIMO_DE_CARACTERES + " y son ambos requeridos");
 			request.setAttribute("usuario", usuario);
 			request.getRequestDispatcher(RUTA_LOGIN).forward(request, response);
+			ProductoDAL productosDal = (ProductoDAL) application.getAttribute("productosDal");
+			request.setAttribute("productos", productosDal.buscarTodosLosProductos());
+
 		}
 
 		else if (esValido) {

@@ -129,10 +129,10 @@ public final class productocrudusuario_jsp extends org.apache.jasper.runtime.Htt
       out.write("\t<nav>\r\n");
       out.write("\t\t<ul>\r\n");
       out.write("\t\t\t\r\n");
-      out.write("\t\t\t<li><a href=\"productocrud?op=alta\">Alta</a></li>\r\n");
+      out.write("\r\n");
+      out.write("\t\t<li><a href=\"loginserver?opcion=logout\">Logout</a></li>\r\n");
+      out.write("\t\t<li><a href=\"/admin/productocrud.jsp\">Mantenimiento Productos</a></li>\r\n");
       out.write("\t\t\r\n");
-      out.write("\t\t\t<li><a href=\"#\">Mantenimiento Productos</a></li>\r\n");
-      out.write("\t\t\t<li><a href=\"productocrud\">Zona de Administracion</a></li>\r\n");
       out.write("\t\t</ul>\r\n");
       out.write("\t</nav>\r\n");
       out.write("\r\n");

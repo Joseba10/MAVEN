@@ -75,7 +75,7 @@ font-weight: bold;
 
 </style>
 
-<form action="productoform" method="post">
+<form action="/admin/productoform" method="post">
 
 <ul>
  	
