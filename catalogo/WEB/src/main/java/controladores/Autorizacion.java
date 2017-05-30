@@ -5,7 +5,6 @@ import java.io.IOException;
 import javax.servlet.Filter;
 import javax.servlet.FilterChain;
 import javax.servlet.FilterConfig;
-import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
@@ -17,7 +16,7 @@ import com.ipartek.TIPOS.Usuario;
 public class Autorizacion implements Filter {
 
 	public void destroy() {
-		// TODO Auto-generated method stub
+
 	}
 
 	public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
@@ -32,14 +31,14 @@ public class Autorizacion implements Filter {
 			usuario = (Usuario) session.getAttribute("usuario");
 		}
 
-		boolean nuevoUsuario = usuario == null;
-		boolean esAdmin = false;
+		boolean esAdmin = ("admin").equals(usuario.getNombre());
 
-		if (!nuevoUsuario) {
-
-			esAdmin = usuario.isAdmin();
-		}
-		RequestDispatcher productocrud = req.getRequestDispatcher("/admin/productocrud");
+		// if (!nuevoUsuario) {
+		//
+		// esAdmin = usuario.isAdmin();
+		//
+		// }
+		//
 		if (!esAdmin) {
 
 			(req.getRequestDispatcher("/loginserver")).forward(request, response);
@@ -47,7 +46,6 @@ public class Autorizacion implements Filter {
 
 		else {
 
-			(productocrud).forward(request, response);
 			chain.doFilter(request, response);
 
 		}

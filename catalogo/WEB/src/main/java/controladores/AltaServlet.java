@@ -9,6 +9,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.ipartek.TIPOS.Usuario;
 import com.ipartek.catalogo.DAL.UsuarioYaExiste;
 import com.ipartek.catalogo.DAL.UsuariosDAL;
@@ -16,6 +18,9 @@ import com.ipartek.catalogo.DAL.UsuariosDAL;
 @WebServlet("/alta")
 public class AltaServlet extends HttpServlet {
 	/* package */static final String USUARIOS_DAL = "usuariosDal";
+
+	// LOG4J
+	private static Logger log = Logger.getLogger(AltaServlet.class);
 
 	private static final long serialVersionUID = 1L;
 
@@ -57,6 +62,7 @@ public class AltaServlet extends HttpServlet {
 
 				try {
 					usuariosDAL.alta(usuario);
+					log.info("Un usuario se acaba de registrar");
 				} catch (UsuarioYaExiste de) {
 					usuario.setNombre("");
 					usuario.setErrores("El usuario ya existe. Elige otro");

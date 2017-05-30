@@ -14,7 +14,7 @@ import com.ipartek.TIPOS.Usuario;
 import com.ipartek.catalogo.DAL.DALException;
 import com.ipartek.catalogo.DAL.UsuariosDAL;
 
-@WebServlet("/usuarioform")
+@WebServlet("/admin/usuarioform")
 public class UsuarioFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
@@ -23,6 +23,7 @@ public class UsuarioFormServlet extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+
 		String op = request.getParameter("opform");
 		String nombre = request.getParameter("nombre");
 		String pass = request.getParameter("pass");

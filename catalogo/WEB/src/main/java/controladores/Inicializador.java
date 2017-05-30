@@ -4,6 +4,9 @@ import javax.servlet.ServletContext;
 import javax.servlet.ServletContextEvent;
 import javax.servlet.ServletContextListener;
 
+import org.apache.log4j.Logger;
+import org.apache.log4j.PropertyConfigurator;
+
 import com.ipartek.TIPOS.Producto;
 import com.ipartek.TIPOS.Usuario;
 import com.ipartek.catalogo.DAL.ProductoDAL;
@@ -12,6 +15,8 @@ import com.ipartek.catalogo.DAL.UsuariosDAL;
 import com.ipartek.catalogo.DAL.UsuariosDalColeccion;
 
 public class Inicializador implements ServletContextListener {
+
+	private static Logger log = Logger.getLogger(Inicializador.class);
 
 	public Inicializador() {
 
@@ -23,6 +28,11 @@ public class Inicializador implements ServletContextListener {
 
 	public void contextInitialized(ServletContextEvent arg0) {
 
+		// Configurar LOG4J
+
+		PropertyConfigurator.configure(Inicializador.class.getClassLoader().getResource("log4j.properties"));
+
+		// Meter cosas de inicio
 		UsuariosDAL usuariosDAL = new UsuariosDalColeccion();
 		ServletContext application = arg0.getServletContext();
 		application.setAttribute("usuariosDal", usuariosDAL);
@@ -34,6 +44,9 @@ public class Inicializador implements ServletContextListener {
 		productosDAL.alta(new Producto("Manzana", "Manzana de Asturias", 1.2, 0));
 		productosDAL.alta(new Producto("Tomate", "Tomates de Jaen", 2.2, 1));
 		application.setAttribute("productosDal", productosDAL);
+
+		Producto[] listaproductos = productosDAL.buscarTodosLosProductos();
+		application.setAttribute("listaproductos", listaproductos);
 	}
 
 }

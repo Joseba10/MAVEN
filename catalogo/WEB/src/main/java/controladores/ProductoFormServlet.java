@@ -10,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import org.apache.log4j.Logger;
+
 import com.ipartek.TIPOS.Producto;
 import com.ipartek.catalogo.DAL.ProductoDAL;
 import com.ipartek.catalogo.DAL.ProductoDALException;
@@ -17,6 +19,7 @@ import com.ipartek.catalogo.DAL.ProductoDALException;
 @WebServlet("/admin/productoform")
 public class ProductoFormServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
+	private static Logger log = Logger.getLogger(ProductoCrudServlet.class);
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		doPost(request, response);
@@ -86,6 +89,7 @@ public class ProductoFormServlet extends HttpServlet {
 		case "alta":
 			if (!dal.validar(producto)) {
 				dal.alta(producto);
+				application.setAttribute("listaproductos", dal.buscarTodosLosProductos());
 				rutaListado.forward(request, response);
 			} else {
 				producto.setErrores("El producto ya existe");
@@ -98,6 +102,11 @@ public class ProductoFormServlet extends HttpServlet {
 
 			try {
 				dal.modificar(producto);
+				application.setAttribute("listaproductos", dal.buscarTodosLosProductos());
+				for (Producto p : dal.buscarTodosLosProductos()) {
+
+					log.info(p);
+				}
 			} catch (ProductoDALException de) {
 				producto.setErrores(de.getMessage());
 				request.setAttribute("producto", producto);
@@ -109,6 +118,7 @@ public class ProductoFormServlet extends HttpServlet {
 			break;
 		case "borrar":
 			dal.borrar(producto);
+			application.setAttribute("listaproductos", dal.buscarTodosLosProductos());
 			rutaListado.forward(request, response);
 
 			break;

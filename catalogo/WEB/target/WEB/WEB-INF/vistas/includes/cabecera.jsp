@@ -15,8 +15,8 @@
 	
 	</style>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
-	<title>Ejemplo MVC</title>
+	<link rel="stylesheet" type="text/css" href="/${pageContext.request.contextPath}css/estilos.css">
+	<title>Mantenimiento de Usuarios</title>
 
 </head>
 
@@ -24,16 +24,25 @@
 
 	<header>
 		
-		<h1>Ejemplo MVC</h1>
-		<p>Ejemplos de uso de MVC con diferentes tecnicas</p>
+		<h1>Mantenimiento de Usuarios</h1>
+		${pageContext.request.requestURI}
 	</header>
 	
 	<nav>
 		<ul>
-			<li><a href="loginserver">Login</a></li>
-			<li><a href="alta">Alta</a></li>
-			<li><a href="loginserver?opcion=logout">Salir</a></li>
+			<%@taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+
+					<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/login.jsp'}">
+						<li><a href="/loginserver?opcion=logout">Logout</a></li>
+				
+					
+				</c:if>
 			<li><a href="/admin/productocrud">Mantenimiento Productos</a></li>
+			
+			
+				<li><a href="/admin/productocrud?op=alta">Alta</a></li>
+					<li><a href="/admin/usuariocrud">Mantenimiento Usuarios</a></li>
+						<li><a href="/loginserver">Login</a></li>
 		
 		</ul>
 	</nav>

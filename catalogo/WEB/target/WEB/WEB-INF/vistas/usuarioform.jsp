@@ -9,7 +9,7 @@
  	<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
  	
  	
-	<form action="usuarioform" method="post">
+	<form action="/admin/usuarioform" method="post">
 		
 <style>
  	

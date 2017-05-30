@@ -73,7 +73,7 @@ margin-top: 30px;
 			
 
 		<li><a href="loginserver?opcion=logout">Logout</a></li>
-		<li><a href="/admin/productocrud.jsp">Mantenimiento Productos</a></li>
+		
 		
 		</ul>
 	</nav>

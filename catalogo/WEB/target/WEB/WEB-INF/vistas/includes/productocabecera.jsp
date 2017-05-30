@@ -55,7 +55,7 @@ margin-top: 30px;
 	
 	</style>
 	<meta charset="UTF-8">
-	<link rel="stylesheet" type="text/css" href="css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="/${pageContext.request.contextPath}css/estilos.css">
 	<title>Ejemplo MVC</title>
 
 </head>
@@ -70,10 +70,11 @@ margin-top: 30px;
 	
 	<nav>
 		<ul>
-			
-			<li><a href="productocrud?op=alta">Alta</a></li>
+					<li><a href="loginserver?opcion=logout">Logout</a></li>
+			<li><a href="/admin/productocrud?op=alta">Alta</a></li>
 		
 			
-				<li><a href="/admin/usuariocrud">Mantenimiento usuarios</a></li>
+				<li><a href="/productocrud">Mantenimiento de Productos</a></li>
+				
 		</ul>
 	</nav>

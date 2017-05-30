@@ -3,7 +3,7 @@
 
 <jsp:useBean id="usuario" scope="request"
  class="com.ipartek.TIPOS.Usuario" />
- 	<%@ include file="includes/cabeceralogin.jsp" %>
+ 	<%@ include file="includes/cabecera.jsp" %>
  	<style>
  	
 ul{

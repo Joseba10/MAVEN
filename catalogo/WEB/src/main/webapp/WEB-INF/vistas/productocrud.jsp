@@ -1,4 +1,4 @@
-<%@  include file="includes/productocabecera.jsp" %>
+<%@  include file="includes/cabecera.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -105,15 +105,16 @@ text-decoration: none;}
 	
 	<tbody>
 	
-	<c:forEach items="${requestScope.productos}" var="producto">
+	<c:forEach items="${applicationScope.listaproductos}" var="producto">
 	<tr>
-		<td><a href="?op=modificar&id=${producto.id }">Modificar</a>
-		<a href="?op=borrar&id=${producto.id }">Borrar</a></td>
+		<td><a href="/admin/productocrud?op=modificar&id=${producto.id }">Modificar</a>
+		<a href="/admin/productocrud?op=borrar&id=${producto.id }">Borrar</a></td>
 		<td>${producto.id }</td>
 		<td>${producto.nombre}</td>
 		<td>${producto.descripcion}</td>
 		<td>${producto.precio} €</td>
-		<td><img src="${producto.imagen}.jpg" width="80px"></td>
+		
+		<td><img src="/${pageContext.request.contextPath}${producto.imagen}.jpg" width="80px"></td>
 	
 	</tr>
 	</c:forEach>

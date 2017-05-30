@@ -1,4 +1,4 @@
-<%@  include file="includes/productocabecerausuario.jsp" %>
+<%@  include file="includes/cabecera.jsp" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -105,7 +105,7 @@ text-decoration: none;}
 	
 	<tbody>
 	
-	<c:forEach items="${requestScope.productos}" var="producto">
+	<c:forEach items="${applicationScope.listaproductos}" var="producto">
 	<tr>
 	
 		<td>${producto.id }</td>
