@@ -18,10 +18,6 @@ public class Inicializador implements ServletContextListener {
 
 	private static Logger log = Logger.getLogger(Inicializador.class);
 
-	public Inicializador() {
-
-	}
-
 	public void contextDestroyed(ServletContextEvent arg0) {
 
 	}
