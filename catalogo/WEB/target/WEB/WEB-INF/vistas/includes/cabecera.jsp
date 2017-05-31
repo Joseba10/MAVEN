@@ -37,12 +37,33 @@
 				
 					
 				</c:if>
-			<li><a href="/admin/productocrud">Mantenimiento Productos</a></li>
+							<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/productocrud.jsp'}">
+					<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/usuarioform.jsp'}">
+					<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/login.jsp'}">
+						<li><a href="/admin/productocrud">Mantenimiento Productos</a></li>
+					
+				</c:if></c:if></c:if>
+	
 			
-			
+			<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/usuariocrud.jsp'}">
+			<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/usuarioform.jsp'}">	
+			<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/productoform.jsp'}">
 				<li><a href="/admin/productocrud?op=alta">Alta</a></li>
+				
+				</c:if></c:if>	</c:if>	
+				<c:if test="${pageContext.request.requestURI = '/WEB-INF/vistas/login.jsp'}">
+					<li><a href="productocrud?op=alta">Alta</a></li>
+				</c:if>	
+			<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/usuariocrud.jsp'}">
+			<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/productoform.jsp'}">
+			<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/login.jsp'}">		
 					<li><a href="/admin/usuariocrud">Mantenimiento Usuarios</a></li>
+								</c:if></c:if></c:if>
+					<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/productocrud.jsp'}">
+					<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/usuariocrud.jsp'}">
+					<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/usuarioform.jsp'}">
+					<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/productoform.jsp'}">
 						<li><a href="/loginserver">Login</a></li>
-		
+		</c:if>	</c:if></c:if></c:if>
 		</ul>
 	</nav>
