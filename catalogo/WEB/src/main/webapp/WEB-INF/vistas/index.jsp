@@ -28,6 +28,7 @@ text-decoration: none;
 text-align: center;
 
 
+
 }
 
 
@@ -54,7 +55,7 @@ margin-top: 80px;
 
 h1{
 
-margin-top: -330px;
+margin-top: -320px;
 
 }
 
@@ -68,7 +69,7 @@ margin-left: 380px;
 #flecha{
 
 margin-left: 720px;
-margin-top: -310px;
+margin-top: -320px;
 
 }
 
