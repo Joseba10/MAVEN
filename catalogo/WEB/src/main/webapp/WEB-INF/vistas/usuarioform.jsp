@@ -15,7 +15,7 @@
  	
 ul{
 
-margin-left: 0px;
+margin-left: 490px;
 margin-top: 0px;
 
 }
@@ -30,6 +30,7 @@ border-radius: 19px;
 color:blue;
 text-align:center;
 display: inline-block;
+
 
 }
 

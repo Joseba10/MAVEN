@@ -97,7 +97,9 @@ public final class alta_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t<header>\r\n");
       out.write("\t\t\r\n");
       out.write("\t\t\r\n");
-      out.write("\t\r\n");
+      out.write("\t\t");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.requestURI}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\r\n");
       out.write("\t</header>\r\n");
       out.write("\t\r\n");
       out.write("\t\r\n");
@@ -176,6 +178,8 @@ public final class alta_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("color:blue;\r\n");
       out.write("text-align:center;\r\n");
       out.write("display: inline-block;\r\n");
+      out.write("margin-left: 500px;\r\n");
+      out.write("margin-top: 22px;\r\n");
       out.write("\r\n");
       out.write("}\r\n");
       out.write("\r\n");
@@ -215,7 +219,7 @@ public final class alta_jsp extends org.apache.jasper.runtime.HttpJspBase
       out.write("\t\t\t<label for=\"nombre\">Nombre</label> \r\n");
       out.write("\t\t\t<input id=\"nombre\" name=\"nombre\" required minlength=\"4\" value=\"");
       out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${usuario.nombre}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write(" \" >\r\n");
+      out.write("\" >\r\n");
       out.write("\r\n");
       out.write("\t\t</fieldset>\r\n");
       out.write("\r\n");

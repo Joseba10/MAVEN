@@ -28,6 +28,7 @@ border-radius: 19px;
 color:blue;
 text-align:center;
 display: inline-block;
+margin-left: 200px;
 
 }
 

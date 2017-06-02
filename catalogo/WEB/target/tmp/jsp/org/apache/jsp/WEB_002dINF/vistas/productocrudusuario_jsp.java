@@ -88,7 +88,9 @@ public final class productocrudusuario_jsp extends org.apache.jasper.runtime.Htt
       out.write("\t<header>\r\n");
       out.write("\t\t\r\n");
       out.write("\t\t\r\n");
-      out.write("\t\r\n");
+      out.write("\t\t");
+      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.requestURI}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+      out.write("\r\n");
       out.write("\t</header>\r\n");
       out.write("\t\r\n");
       out.write("\t\r\n");
@@ -174,6 +176,7 @@ public final class productocrudusuario_jsp extends org.apache.jasper.runtime.Htt
       out.write("color:blue;\r\n");
       out.write("text-align:center;\r\n");
       out.write("display: inline-block;\r\n");
+      out.write("margin-left: 200px;\r\n");
       out.write("\r\n");
       out.write("}\r\n");
       out.write("\r\n");

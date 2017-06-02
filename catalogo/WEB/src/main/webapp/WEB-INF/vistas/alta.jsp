@@ -25,6 +25,8 @@ border-radius: 19px;
 color:blue;
 text-align:center;
 display: inline-block;
+margin-left: 500px;
+margin-top: 22px;
 
 }
 
@@ -62,7 +64,7 @@ width: 200px;
 		<fieldset>
 
 			<label for="nombre">Nombre</label> 
-			<input id="nombre" name="nombre" required minlength="4" value="${usuario.nombre} " >
+			<input id="nombre" name="nombre" required minlength="4" value="${usuario.nombre}" >
 
 		</fieldset>
 

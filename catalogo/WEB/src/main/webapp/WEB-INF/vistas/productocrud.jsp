@@ -29,6 +29,7 @@ color:blue;
 text-align:center;
 display: inline-block;
 
+
 }
 
 li a:hover {
