@@ -25,7 +25,7 @@
 	<header>
 		
 		
-		${pageContext.request.requestURI}
+	
 	</header>
 	
 	

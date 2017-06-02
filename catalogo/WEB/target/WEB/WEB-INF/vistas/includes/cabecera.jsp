@@ -24,7 +24,7 @@
 
 	<header>
 		
-		<h1>Mantenimiento de Usuarios</h1>
+		
 		${pageContext.request.requestURI}
 	</header>
 	
@@ -108,5 +108,11 @@
 					<c:if test="${pageContext.request.requestURI != '/WEB-INF/vistas/login.jsp'}">	
 						<li><a href="/loginserver">Login</a></li>
 		</c:if>	</c:if></c:if></c:if></c:if></c:if>
+		
+		
+		
+		
+					
+						
 		</ul>
 	</nav>
