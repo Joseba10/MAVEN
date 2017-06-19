@@ -13,10 +13,11 @@ import javax.servlet.http.HttpSession;
 
 import org.apache.log4j.Logger;
 
+import DAO.ProductoDAO;
+import DAO.UsuarioDAO;
+
 import com.ipartek.TIPOS.Producto;
 import com.ipartek.TIPOS.Usuario;
-import com.ipartek.catalogo.DAL.ProductoDAL;
-import com.ipartek.catalogo.DAL.UsuariosDAL;
 
 @WebServlet("/loginserver")
 public class LoginServer extends HttpServlet {
@@ -40,20 +41,21 @@ public class LoginServer extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		// Recoger datos de vistas
-		String nombre = request.getParameter("nombre");
-		String pass = request.getParameter("pass");
+		String username = request.getParameter("username");
+		String nombre_completo = request.getParameter("nombre_completo");
+		String password = request.getParameter("password");
 		String opcion = request.getParameter("opcion");
 		// Crear modelos en base a los datos
-		Usuario usuario = new Usuario();
-		usuario.setNombre(nombre);
-		usuario.setPass(pass);
+		Usuario usuario = new Usuario(0, 2, username, password, nombre_completo);
+		usuario.setUsername(username);
+		usuario.setPassword(password);
 
 		// Llamada a la logica de negocio
 		ServletContext application = getServletContext();
 		// Recoge datos
-		UsuariosDAL usuariosDAL = (UsuariosDAL) application.getAttribute("usuariosDal");
+		UsuarioDAO usuarioDAO = (UsuarioDAO) application.getAttribute("usuarioDAO");
 
-		ProductoDAL productoDAL = (ProductoDAL) application.getAttribute("productosDal");
+		ProductoDAO productoDAO = (ProductoDAO) application.getAttribute("productoDAO");
 		// Si no existe el dato se crea
 
 		Producto[] listaproductos = (Producto[]) application.getAttribute("listaproductos");
@@ -79,19 +81,22 @@ public class LoginServer extends HttpServlet {
 		cookie.setMaxAge(TIEMPO_INACTIVIDAD);
 		response.addCookie(cookie);
 		// ESTADOS
-		boolean esValido = usuariosDAL.validar(usuario);
+		usuarioDAO.abrir();
+		boolean esValido = usuarioDAO.validar(usuario);
 
-		boolean sinParametros = usuario.getNombre() == null;
+		usuarioDAO.cerrar();
+
+		boolean sinParametros = usuario.getUsername() == null;
 
 		boolean esUsuarioRegistrado = request.getSession().getAttribute("usuario") != null;
 
 		boolean quiereSalir = "logout".equals(opcion);
 
-		boolean nombreValido = usuario.getNombre() != null && usuario.getNombre().length() >= MINIMO_DE_CARACTERES;
+		boolean nombreValido = usuario.getUsername() != null && usuario.getUsername().length() >= MINIMO_DE_CARACTERES;
 
-		boolean passValido = usuario.getPass() != null && usuario.getPass().length() >= MINIMO_DE_CARACTERES;
+		boolean passValido = usuario.getPassword() != null && usuario.getPassword().length() >= MINIMO_DE_CARACTERES;
 
-		boolean esadmin = ("admin").equals(usuario.getNombre());
+		boolean esadmin = ("admin").equals(usuario.getUsername());
 		// Redirigir a una nueva vista
 
 		if (quiereSalir) {
@@ -102,6 +107,14 @@ public class LoginServer extends HttpServlet {
 		}
 
 		else if (esadmin) {
+
+			usuarioDAO.abrir();
+
+			usuario = usuarioDAO.findByName(usuario.getUsername());
+			log.info(usuario.getId());
+			log.info(usuario.getUsername());
+			log.info(usuario.getId_roles());
+			usuarioDAO.cerrar();
 
 			session.setAttribute("usuario", usuario);
 			request.getRequestDispatcher(RUTA_ADMIN).forward(request, response);
@@ -123,12 +136,21 @@ public class LoginServer extends HttpServlet {
 		}
 
 		else if (esValido) {
+
+			usuarioDAO.abrir();
+
+			usuario = usuarioDAO.findByName(usuario.getUsername());
+			log.info(usuario.getId());
+			log.info(usuario.getUsername());
+			log.info(usuario.getId_roles());
+			usuarioDAO.cerrar();
+
 			session.setAttribute("usuario", usuario);
 
 			// response.sendRedirect("principal.jsp");
 			request.getRequestDispatcher(RUTA_PRINCIPAL).forward(request, response);
 
-			log.info("El usuario " + usuario.getNombre() + " se acaba de logear");
+			log.info("El usuario " + usuario.getUsername() + " se acaba de logear");
 		}
 
 		else {

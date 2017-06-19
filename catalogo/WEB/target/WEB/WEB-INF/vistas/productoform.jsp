@@ -99,16 +99,23 @@ readonly="readonly"
 			<input id="nombre" name="nombre" type="text" value="${producto.nombre}">
 
 		</fieldset>
+			<fieldset>
+
+			<label for="precio">Precio</label>
+			<input id="precio" name="precio" value="${producto.precio}">
+
+		</fieldset>
 		<fieldset>
 
 			<label for="descripcion">Descripcion</label>
 			<input id="descripcion" name="descripcion" type="text" value="${producto.descripcion}">
 
 		</fieldset>
+	
 		<fieldset>
 
-			<label for="precio">Precio</label>
-			<input id="precio" name="precio" value="${producto.precio}">
+			<label for="cantidad">Cantidad</label>
+			<input id="cantidad" name="cantidad" type="text" value="${producto.cantidad}">
 
 		</fieldset>
 		

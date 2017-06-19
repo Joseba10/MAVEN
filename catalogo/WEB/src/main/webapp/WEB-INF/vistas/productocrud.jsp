@@ -108,9 +108,9 @@ text-decoration: none;}
 	
 	<c:forEach items="${applicationScope.listaproductos}" var="producto">
 	<tr>
-		<td><a href="/admin/productocrud?op=modificar&id=${producto.id }">Modificar</a>
-		<a href="/admin/productocrud?op=borrar&id=${producto.id }">Borrar</a></td>
-		<td>${producto.id }</td>
+		<td><a href="/admin/productocrud?op=modificar&id=${producto.id}">Modificar</a>
+		<a href="/admin/productocrud?op=borrar&id=${producto.id}">Borrar</a></td>
+		<td>${producto.id}</td>
 		<td>${producto.nombre}</td>
 		<td>${producto.descripcion}</td>
 		<td>${producto.precio} €</td>

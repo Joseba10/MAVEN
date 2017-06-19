@@ -11,8 +11,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import DAO.ProductoDAO;
+
 import com.ipartek.TIPOS.Producto;
-import com.ipartek.catalogo.DAL.ProductoDAL;
 
 @WebServlet("/admin/productocrud")
 public class ProductoCrudServlet extends HttpServlet {
@@ -30,9 +31,9 @@ public class ProductoCrudServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ServletContext application = request.getServletContext();
-		ProductoDAL dal = (ProductoDAL) application.getAttribute("productosDal");// Si
-																					// entras
-																					// por
+		ProductoDAO dao = (ProductoDAO) application.getAttribute("productoDAO");// Si
+																				// entras
+																				// por
 		// primera vez se
 		// crea un objeto
 		// dal lo guarda y
@@ -48,19 +49,30 @@ public class ProductoCrudServlet extends HttpServlet {
 			// application.getAttribute("listaproductos");
 			//
 			// application.setAttribute("listaproductos", listaproductos);
+			dao.abrir();
+			Producto[] listaproductos = dao.findAll();
+			dao.cerrar();
+
+			request.setAttribute("listaproductos", listaproductos);
 
 			request.getRequestDispatcher(RUTA_LISTADO).forward(request, response);
 		} else {
 
 			Producto producto;
-			Integer id;
+			Integer id = 0;
 			switch (op) {
 			case "modificar":
 			case "borrar":
 
-				id = Integer.parseInt(request.getParameter("id"));
+				if ((request.getParameter("id") != null)) {
+					id = Integer.parseInt(request.getParameter("id"));
+				}
+				log.info(id);
 
-				producto = dal.buscarPorId(id);
+				dao.abrir();
+				producto = dao.findById(id);
+
+				dao.cerrar();
 
 				request.setAttribute("producto", producto);
 				// request.getRequestDispatcher(RUTA_FORMULARIO).forward(request,
@@ -69,11 +81,12 @@ public class ProductoCrudServlet extends HttpServlet {
 			case "alta":
 				log.info("Se ha dado un nuevo producto de alta");
 
-				for (Producto p : dal.buscarTodosLosProductos()) {
+				dao.abrir();
+				for (Producto p : dao.findAll()) {
 
 					log.info(p);
 				}
-
+				dao.cerrar();
 				request.getRequestDispatcher(RUTA_FORMULARIO).forward(request, response);
 
 				break;

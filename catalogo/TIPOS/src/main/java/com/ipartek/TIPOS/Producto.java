@@ -5,7 +5,7 @@ package com.ipartek.TIPOS;
 public class Producto {
 
 	String nombre, descripcion, errores;
-	int id, imagen;
+	int id, imagen, cantidad;
 	double precio;
 
 	public Producto() {
@@ -21,13 +21,22 @@ public class Producto {
 		this.errores = errores;
 	}
 
-	public Producto(String nombre, String descripcion, double precio, int imagen) {
+	public Producto(String nombre, double precio, String descripcion, int imagen, int cantidad) {
 		super();
 		this.nombre = nombre;
 		this.descripcion = descripcion;
 		this.precio = precio;
 		this.imagen = imagen;
+		this.cantidad = cantidad;
 		// this.id = ProductoDalColeccion.siguienteId;
+	}
+
+	public int getCantidad() {
+		return cantidad;
+	}
+
+	public void setCantidad(int cantidad) {
+		this.cantidad = cantidad;
 	}
 
 	public int getImagen() {

@@ -11,13 +11,14 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import DAO.UsuarioDAO;
+
 import com.ipartek.TIPOS.Usuario;
 import com.ipartek.catalogo.DAL.UsuarioYaExiste;
-import com.ipartek.catalogo.DAL.UsuariosDAL;
 
 @WebServlet("/alta")
 public class AltaServlet extends HttpServlet {
-	/* package */static final String USUARIOS_DAL = "usuariosDal";
+	/* package */static final String USUARIOS_DAO = "usuarioDAO";
 
 	// LOG4J
 	private static Logger log = Logger.getLogger(AltaServlet.class);
@@ -34,20 +35,20 @@ public class AltaServlet extends HttpServlet {
 
 		ServletContext application = request.getServletContext();
 
-		String nombre = request.getParameter("nombre");
-		String pass = request.getParameter("pass");
-		String pass2 = request.getParameter("pass2");
+		String username = request.getParameter("username");
+		String pass = request.getParameter("password");
+		String nombre_completo = request.getParameter("nombre_completo");
 
 		// Inicio sin datos: mostrar formulario
 		// Datos incorrectos: sin rellenar, límite de caracteres, no coinciden contraseñas
 		// Las contraseñas deben ser iguales
 		// Datos correctos: guardar
 
-		Usuario usuario = new Usuario(nombre, pass);
+		Usuario usuario = new Usuario(1, 2, username, pass, nombre_completo);
 
-		boolean hayDatos = nombre != null && pass != null && pass2 != null;
-		boolean datosCorrectos = validarCampo(nombre) && validarCampo(pass) && validarCampo(pass2);
-		boolean passIguales = pass != null && pass.equals(pass2);
+		boolean hayDatos = username != null && pass != null && nombre_completo != null;
+		boolean datosCorrectos = validarCampo(username) && validarCampo(pass) && validarCampo(nombre_completo);
+		boolean passIguales = pass != null && pass.equals(nombre_completo);
 
 		if (hayDatos) {
 			if (!datosCorrectos) {
@@ -58,13 +59,15 @@ public class AltaServlet extends HttpServlet {
 				request.setAttribute("usuario", usuario);
 			} else {
 
-				UsuariosDAL usuariosDAL = (UsuariosDAL) application.getAttribute(USUARIOS_DAL);
+				UsuarioDAO usuarioDAO = (UsuarioDAO) application.getAttribute(USUARIOS_DAO);
 
 				try {
-					usuariosDAL.alta(usuario);
+					usuarioDAO.abrir();
+					usuarioDAO.insert(usuario);
+					usuarioDAO.cerrar();
 					log.info("Un usuario se acaba de registrar");
 				} catch (UsuarioYaExiste de) {
-					usuario.setNombre("");
+					usuario.setUsername("");
 					usuario.setErrores("El usuario ya existe. Elige otro");
 					request.setAttribute("usuario", usuario);
 				}

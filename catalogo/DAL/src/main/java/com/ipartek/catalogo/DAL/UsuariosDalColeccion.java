@@ -10,10 +10,10 @@ public class UsuariosDalColeccion implements UsuariosDAL {
 	private Map<String, Usuario> usuarios = new HashMap<String, Usuario>();
 
 	public void alta(Usuario usuario) {
-		if (usuarios.containsKey(usuario.getNombre()))
-			throw new UsuarioYaExiste("Ya existe el usuario " + usuario.getNombre());
+		if (usuarios.containsKey(usuario.getNombre_completo()))
+			throw new UsuarioYaExiste("Ya existe el usuario " + usuario.getNombre_completo());
 
-		usuarios.put(usuario.getNombre(), usuario);
+		usuarios.put(usuario.getNombre_completo(), usuario);
 	}
 
 	public boolean validar(Usuario usuario) {
@@ -21,14 +21,14 @@ public class UsuariosDalColeccion implements UsuariosDAL {
 	}
 
 	public void modificar(Usuario usuario) {
-		if (!usuarios.containsKey(usuario.getNombre()))
+		if (!usuarios.containsKey(usuario.getNombre_completo()))
 			throw new DALException("Intento de modificar usuario no existente " + usuario);
 
-		usuarios.put(usuario.getNombre(), usuario);
+		usuarios.put(usuario.getNombre_completo(), usuario);
 	}
 
 	public void borrar(Usuario usuario) {
-		usuarios.remove(usuario.getNombre());
+		usuarios.remove(usuario.getNombre_completo());
 	}
 
 	public Usuario buscarPorId(String id) {

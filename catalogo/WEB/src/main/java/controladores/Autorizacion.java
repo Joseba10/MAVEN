@@ -31,7 +31,7 @@ public class Autorizacion implements Filter {
 			usuario = (Usuario) session.getAttribute("usuario");
 		}
 
-		boolean esAdmin = ("admin").equals(usuario.getNombre());
+		boolean isAdmin = usuario.getId_roles() == 1;
 
 		// if (!nuevoUsuario) {
 		//
@@ -39,7 +39,7 @@ public class Autorizacion implements Filter {
 		//
 		// }
 		//
-		if (!esAdmin) {
+		if (!isAdmin) {
 
 			(req.getRequestDispatcher("/loginserver")).forward(request, response);
 		}

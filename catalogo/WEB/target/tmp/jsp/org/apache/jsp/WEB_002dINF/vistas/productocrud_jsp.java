@@ -88,9 +88,7 @@ public final class productocrud_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t<header>\r\n");
       out.write("\t\t\r\n");
       out.write("\t\t\r\n");
-      out.write("\t\t");
-      out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.requestURI}", java.lang.String.class, (PageContext)_jspx_page_context, null));
-      out.write("\r\n");
+      out.write("\t\r\n");
       out.write("\t</header>\r\n");
       out.write("\t\r\n");
       out.write("\t\r\n");
@@ -1346,13 +1344,13 @@ public final class productocrud_jsp extends org.apache.jasper.runtime.HttpJspBas
           out.write("\r\n");
           out.write("\t<tr>\r\n");
           out.write("\t\t<td><a href=\"/admin/productocrud?op=modificar&id=");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.id }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\">Modificar</a>\r\n");
           out.write("\t\t<a href=\"/admin/productocrud?op=borrar&id=");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.id }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("\">Borrar</a></td>\r\n");
           out.write("\t\t<td>");
-          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.id }", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.id}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write("</td>\r\n");
           out.write("\t\t<td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.nombre}", java.lang.String.class, (PageContext)_jspx_page_context, null));

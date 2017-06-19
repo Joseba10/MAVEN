@@ -7,7 +7,7 @@ public class UsuariosDALUsuarioUnico implements UsuariosDAL {
 	private Usuario usuario;
 
 	public void alta(Usuario usuario) {
-		if (this.usuario.getNombre().equals(usuario.getNombre()))
+		if (this.usuario.getNombre_completo().equals(usuario.getNombre_completo()))
 			throw new DALException("Ya existe un usuario con ese nombre: " + usuario);
 
 		this.usuario = usuario;
@@ -18,7 +18,7 @@ public class UsuariosDALUsuarioUnico implements UsuariosDAL {
 	}
 
 	public void modificar(Usuario usuario) {
-		if (!this.usuario.getNombre().equals(usuario.getNombre()))
+		if (!this.usuario.getNombre_completo().equals(usuario.getNombre_completo()))
 			throw new DALException("No se ha encontrado el usuario a modificar " + usuario);
 		this.usuario = usuario;
 

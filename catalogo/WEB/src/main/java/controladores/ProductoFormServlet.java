@@ -12,8 +12,9 @@ import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
 
+import DAO.ProductoDAO;
+
 import com.ipartek.TIPOS.Producto;
-import com.ipartek.catalogo.DAL.ProductoDAL;
 import com.ipartek.catalogo.DAL.ProductoDALException;
 
 @WebServlet("/admin/productoform")
@@ -31,7 +32,7 @@ public class ProductoFormServlet extends HttpServlet {
 		int id;
 		String descripcion = request.getParameter("descripcion");
 		double precio;
-		int imagen;
+		int imagen, cantidad = 0;
 
 		if (request.getParameter("imagen") == null) {
 
@@ -80,16 +81,20 @@ public class ProductoFormServlet extends HttpServlet {
 			return;
 		}
 
-		Producto producto = new Producto(nombre, descripcion, precio, imagen);
+		Producto producto = new Producto(nombre, precio, descripcion, imagen, cantidad);
 		producto.setId(id);
 		ServletContext application = request.getServletContext();
-		ProductoDAL dal = (ProductoDAL) application.getAttribute("productosDal");
+		ProductoDAO dao = (ProductoDAO) application.getAttribute("productoDAO");
 
 		switch (op) {
 		case "alta":
-			if (!dal.validar(producto)) {
-				dal.alta(producto);
-				application.setAttribute("listaproductos", dal.buscarTodosLosProductos());
+
+			if (!dao.validar(producto)) {
+				dao.abrir();
+				dao.insert(producto);
+
+				application.setAttribute("listaproductos", dao.findAll());
+				dao.cerrar();
 				rutaListado.forward(request, response);
 			} else {
 				producto.setErrores("El producto ya existe");
@@ -101,9 +106,12 @@ public class ProductoFormServlet extends HttpServlet {
 		case "modificar":
 
 			try {
-				dal.modificar(producto);
-				application.setAttribute("listaproductos", dal.buscarTodosLosProductos());
-				for (Producto p : dal.buscarTodosLosProductos()) {
+				dao.abrir();
+				dao.update(producto);
+
+				application.setAttribute("listaproductos", dao.findAll());
+				dao.cerrar();
+				for (Producto p : dao.findAll()) {
 
 					log.info(p);
 				}
@@ -117,8 +125,12 @@ public class ProductoFormServlet extends HttpServlet {
 
 			break;
 		case "borrar":
-			dal.borrar(producto);
-			application.setAttribute("listaproductos", dal.buscarTodosLosProductos());
+
+			dao.abrir();
+			dao.delete(producto);
+
+			application.setAttribute("listaproductos", dao.findAll());
+			dao.cerrar();
 			rutaListado.forward(request, response);
 
 			break;

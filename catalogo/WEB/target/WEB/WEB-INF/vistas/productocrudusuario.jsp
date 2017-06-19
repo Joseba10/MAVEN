@@ -28,6 +28,7 @@ border-radius: 19px;
 color:blue;
 text-align:center;
 display: inline-block;
+margin-left: 200px;
 
 }
 
@@ -95,8 +96,9 @@ text-decoration: none;}
 	
 	<th>ID</th>
 	<th>Producto</th>
-	<th>Descripcion</th>
 	<th>Precio</th>
+	<th>Descripcion</th>
+	<th>Cantidad</th>
 	<th>Imagen</th>
 	
 	</tr>
@@ -110,9 +112,11 @@ text-decoration: none;}
 	
 		<td>${producto.id }</td>
 		<td>${producto.nombre}</td>
-		<td>${producto.descripcion}</td>
 		<td>${producto.precio} €</td>
+		<td>${producto.descripcion}</td>
+		<td>${producto.cantidad} €</td>
 		<td><img src="${producto.imagen}.jpg" width="80px"></td>
+		
 	
 	</tr>
 	</c:forEach>

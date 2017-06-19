@@ -9,8 +9,9 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.UsuarioDAO;
+
 import com.ipartek.TIPOS.Usuario;
-import com.ipartek.catalogo.DAL.UsuariosDAL;
 
 @WebServlet("/admin/usuariocrud")
 public class UsuarioCrudServlet extends HttpServlet {
@@ -26,9 +27,9 @@ public class UsuarioCrudServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		ServletContext application = getServletContext();
-		UsuariosDAL dal = (UsuariosDAL) application.getAttribute("usuariosDal");// Si
-																				// entras
-																				// por
+		UsuarioDAO usuarioDAO = (UsuarioDAO) application.getAttribute("usuarioDAO");// Si
+		// entras
+		// por
 		// primera vez se
 		// crea un objeto
 		// mismo si entras
@@ -40,21 +41,28 @@ public class UsuarioCrudServlet extends HttpServlet {
 
 		if (op == null) {
 
-			Usuario[] usuarios = dal.buscarTodosLosUsuarios();
+			usuarioDAO.abrir();
+			Usuario[] usuarios = usuarioDAO.findAll();
+			usuarioDAO.cerrar();
 
 			request.setAttribute("usuarios", usuarios);
 
 			request.getRequestDispatcher(RUTA_LISTADO).forward(request, response);
 		} else {
-			String id = request.getParameter("id");
+
+			String username = (request.getParameter("username"));
 
 			Usuario usuario;
 
 			switch (op) {
 			case "modificar":
 			case "borrar":
-				usuario = dal.buscarPorId(id);
+
+				usuarioDAO.abrir();
+				usuario = usuarioDAO.findByName(username);
+				usuarioDAO.cerrar();
 				request.setAttribute("usuario", usuario);
+
 			case "alta":
 				request.getRequestDispatcher(RUTA_FORMULARIO).forward(request, response);
 				break;

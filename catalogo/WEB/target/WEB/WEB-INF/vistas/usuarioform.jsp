@@ -15,7 +15,7 @@
  	
 ul{
 
-margin-left: 0px;
+margin-left: 490px;
 margin-top: 0px;
 
 }
@@ -30,6 +30,7 @@ border-radius: 19px;
 color:blue;
 text-align:center;
 display: inline-block;
+
 
 }
 
@@ -66,9 +67,9 @@ width: 200px;
 
 		<fieldset>
 
-			<label for="nombre">Nombre</label> 
-			<input id="nombre" name="nombre"
-			 required minlength="4" value="${usuario.nombre}"
+			<label for="username">Nombre</label> 
+			<input id="username" name="username"
+			 required minlength="4" value="${usuario.username}"
 			 
 			<c:if test="${param.op=='modificar' or param.op == 'borrar'}">
 			
@@ -80,14 +81,28 @@ readonly="readonly"
 
 		<fieldset>
 
-			<label for="pass">Contraseña</label>
-			<input id="pass" name="pass" type="password">
+			<label for="password">Contraseña</label>
+			<input id="password" name="password" type="password" value="${usuario.password}">
 
 		</fieldset>
 		<fieldset>
 
 			<label for="pass2">Contraseña Otra vez</label>
-			<input id="pass2" name="pass2" type="password">
+			<input id="pass2" name="pass2" type="password" value="${usuario.password}">
+
+		</fieldset>
+		
+		<fieldset>
+
+			<label for="id_roles">ID ROLES</label>
+			<input id="id_roles" name="id_roles" type="text" value="${usuario.id_roles}">
+
+		</fieldset>
+		
+			<fieldset>
+
+			<label for="nombre_completo">Nombre Completo</label>
+			<input id="nombre_completo" name="nombre_completo" type="text" value="${usuario.nombre_completo}">
 
 		</fieldset>
 		<fieldset>

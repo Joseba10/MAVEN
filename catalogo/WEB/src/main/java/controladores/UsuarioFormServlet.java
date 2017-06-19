@@ -10,9 +10,10 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import DAO.DAOException;
+import DAO.UsuarioDAO;
+
 import com.ipartek.TIPOS.Usuario;
-import com.ipartek.catalogo.DAL.DALException;
-import com.ipartek.catalogo.DAL.UsuariosDAL;
 
 @WebServlet("/admin/usuarioform")
 public class UsuarioFormServlet extends HttpServlet {
@@ -25,9 +26,16 @@ public class UsuarioFormServlet extends HttpServlet {
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
 		String op = request.getParameter("opform");
-		String nombre = request.getParameter("nombre");
-		String pass = request.getParameter("pass");
+		String username = request.getParameter("username");
+		String password = request.getParameter("password");
 		String pass2 = request.getParameter("pass2");
+
+		int id_roles = 0;
+		if (request.getParameter("id_roles") != null) {
+			id_roles = Integer.parseInt(request.getParameter("id_roles"));
+		}
+
+		String nombre_completo = request.getParameter("nombre_completo");
 
 		RequestDispatcher rutaListado = request.getRequestDispatcher(UsuarioCrudServlet.RUTA_SERVLET_LISTADO);
 		RequestDispatcher rutaFormulario = request.getRequestDispatcher(UsuarioCrudServlet.RUTA_FORMULARIO);
@@ -44,15 +52,17 @@ public class UsuarioFormServlet extends HttpServlet {
 			return;
 		}
 
-		Usuario usuario = new Usuario(nombre, pass);
+		Usuario usuario = new Usuario(0, id_roles, username, password, nombre_completo);
 
 		ServletContext application = getServletContext();
-		UsuariosDAL dal = (UsuariosDAL) application.getAttribute("usuariosDal");
+		UsuarioDAO usuarioDAO = (UsuarioDAO) application.getAttribute("usuarioDAO");
 
 		switch (op) {
 		case "alta":
-			if (pass.equals(pass2)) {
-				dal.alta(usuario);
+			if (password.equals(pass2)) {
+				usuarioDAO.abrir();
+				usuarioDAO.insert(usuario);
+				usuarioDAO.cerrar();
 				rutaListado.forward(request, response);
 			} else {
 				usuario.setErrores("Las contraseñas no coinciden");
@@ -62,10 +72,15 @@ public class UsuarioFormServlet extends HttpServlet {
 
 			break;
 		case "modificar":
-			if (pass.equals(pass2)) {
+			if (password.equals(pass2)) {
 				try {
-					dal.modificar(usuario);
-				} catch (DALException de) {
+					usuarioDAO.abrir();
+
+					usuarioDAO.update(usuario);
+
+					usuarioDAO.cerrar();
+
+				} catch (DAOException de) {
 					usuario.setErrores(de.getMessage());
 					request.setAttribute("usuario", usuario);
 					rutaFormulario.forward(request, response);
@@ -80,11 +95,15 @@ public class UsuarioFormServlet extends HttpServlet {
 
 			break;
 		case "borrar":
-			dal.borrar(usuario);
+
+			usuarioDAO.abrir();
+
+			usuarioDAO.delete(usuario);
+
+			usuarioDAO.cerrar();
 			rutaListado.forward(request, response);
 
 			break;
 		}
 	}
-
 }

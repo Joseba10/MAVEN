@@ -63,29 +63,37 @@ width: 200px;
 
 		<fieldset>
 
-			<label for="nombre">Nombre</label> 
-			<input id="nombre" name="nombre" required minlength="4" value="${usuario.nombre}" >
+			<label for="username">Nombre</label> 
+			<input id="username" name="username" required minlength="4" value="${usuario.username}" >
 
 		</fieldset>
 
 		<fieldset>
 
-			<label for="pass">Contraseña</label>
-			<input id="pass" name="pass" type="password">
+			<label for="password">Contraseña</label>
+			<input id="password" name="password" type="password">
 
 		</fieldset>
 		<fieldset>
 
-			<label for="pass2">Contraseña</label>
+			<label for="pass2">Repetir Contraseña</label>
 			<input id="pass2" name="pass2" type="password">
+
+		</fieldset>
+			<fieldset>
+
+			<label for="nombre_completo">Nombre Completo</label>
+			<input id="nombre_completo" name="nombre_completo" type="text">
 
 		</fieldset>
 		<fieldset>
 
 			<input type="submit" value="Alta">
-			<p class="errores">${usuario.errores }</p>
+			<p class="errores">${usuario.errores}</p>
 
 		</fieldset>
+		
+	
 	</form>
 	
 	<%@ include file="includes/pie.jsp" %>

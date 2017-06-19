@@ -99,7 +99,7 @@ text-decoration: none;
 <tr>
 
 	<th>Operaciones<th>Usuario</th>
-	<th>Contraseña</th>
+	<th>Contraseña</th><th>Roles</th><th>Nombre Completo</th>
 	
 	</tr>
 	
@@ -109,10 +109,12 @@ text-decoration: none;
 	
 	<c:forEach items="${requestScope.usuarios}" var="usuario">
 	<tr>
-		<td><a href="?op=modificar&id=${usuario.nombre }">Modificar</a>
-		<a href="?op=borrar&id=${usuario.nombre }">Borrar</a>
-		<td>${usuario.nombre}</td>
-		<td>${usuario.pass}</td>
+		<td><a href="?op=modificar&username=${usuario.username}">Modificar</a>
+		<a href="?op=borrar&username=${usuario.username}">Borrar</a>
+		<td>${usuario.username}</td>
+		<td>${usuario.password}</td>
+		<td>${usuario.id_roles}</td>
+		<td>${usuario.nombre_completo}</td>
 		
 	</tr>
 	</c:forEach>
