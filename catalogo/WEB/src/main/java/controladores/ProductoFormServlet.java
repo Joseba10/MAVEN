@@ -32,7 +32,8 @@ public class ProductoFormServlet extends HttpServlet {
 		int id;
 		String descripcion = request.getParameter("descripcion");
 		double precio;
-		int imagen, cantidad = 0;
+		int imagen = 0;
+		int cantidad = Integer.parseInt(request.getParameter("cantidad"));
 
 		if (request.getParameter("imagen") == null) {
 

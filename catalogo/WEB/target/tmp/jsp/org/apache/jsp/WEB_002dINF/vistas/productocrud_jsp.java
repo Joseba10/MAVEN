@@ -244,6 +244,7 @@ public final class productocrud_jsp extends org.apache.jasper.runtime.HttpJspBas
       out.write("\t<th>Producto</th>\r\n");
       out.write("\t<th>Descripcion</th>\r\n");
       out.write("\t<th>Precio</th>\r\n");
+      out.write("\t<th>Cantidad</th>\r\n");
       out.write("\t<th>Imagen</th>\r\n");
       out.write("\t\r\n");
       out.write("\t</tr>\r\n");
@@ -1361,6 +1362,10 @@ public final class productocrud_jsp extends org.apache.jasper.runtime.HttpJspBas
           out.write("\t\t<td>");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.precio}", java.lang.String.class, (PageContext)_jspx_page_context, null));
           out.write(" €</td>\r\n");
+          out.write("\t\t<td>");
+          out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${producto.cantidad}", java.lang.String.class, (PageContext)_jspx_page_context, null));
+          out.write("</td>\r\n");
+          out.write("\t\t\r\n");
           out.write("\t\t\r\n");
           out.write("\t\t<td><img src=\"/");
           out.write((java.lang.String) org.apache.jasper.runtime.PageContextImpl.evaluateExpression("${pageContext.request.contextPath}", java.lang.String.class, (PageContext)_jspx_page_context, null));

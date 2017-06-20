@@ -98,6 +98,7 @@ text-decoration: none;}
 	<th>Producto</th>
 	<th>Descripcion</th>
 	<th>Precio</th>
+	<th>Cantidad</th>
 	<th>Imagen</th>
 	
 	</tr>
@@ -114,6 +115,8 @@ text-decoration: none;}
 		<td>${producto.nombre}</td>
 		<td>${producto.descripcion}</td>
 		<td>${producto.precio} €</td>
+		<td>${producto.cantidad}</td>
+		
 		
 		<td><img src="/${pageContext.request.contextPath}${producto.imagen}.jpg" width="80px"></td>
 	
