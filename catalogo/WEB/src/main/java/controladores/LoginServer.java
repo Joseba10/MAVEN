@@ -96,7 +96,7 @@ public class LoginServer extends HttpServlet {
 
 		boolean passValido = usuario.getPassword() != null && usuario.getPassword().length() >= MINIMO_DE_CARACTERES;
 
-		boolean esadmin = ("admin").equals(usuario.getUsername());
+		boolean esadmin = ("admin").equals(usuario.getUsername()) && ("admin").equals(usuario.getPassword());
 		// Redirigir a una nueva vista
 
 		if (quiereSalir) {
