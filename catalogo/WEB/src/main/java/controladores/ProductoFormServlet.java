@@ -111,10 +111,12 @@ public class ProductoFormServlet extends HttpServlet {
 
 				application.setAttribute("listaproductos", dao.findAll());
 				dao.cerrar();
+				dao.abrir();
 				for (Producto p : dao.findAll()) {
 
 					log.info(p);
 				}
+				dao.cerrar();
 			} catch (ProductoDALException de) {
 				producto.setErrores(de.getMessage());
 				request.setAttribute("producto", producto);
